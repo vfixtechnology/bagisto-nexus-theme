@@ -72,13 +72,19 @@ npm install && npm run build
 php artisan vendor:publish --provider="Vfixtechnology\NexusTheme\Providers\NexusThemeServiceProvider"
 ```
 
-9. Clear Cache: 
+8. Clear Cache: 
 ```php
 php artisan optimize:clear
 ```
 
-8. Activate the Theme : Dashboard → Settings → Channels
+9. Activate the Theme : Dashboard → Settings → Channels
 ##### Select the Nexus theme from the dropdown and save your changes.
+
+10. Note: After applying a new theme, the homepage may appear blank. To restore the previous homepage content, follow these steps:
+##### 1. Navigate to Dashboard > Theme.
+##### 2. For each section/item listed, change the theme from Default to Nexus.
+##### 3. This will reinstate all the original homepage components.
+
 
 
 
