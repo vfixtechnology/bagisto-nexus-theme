@@ -6,11 +6,23 @@ Bagisto custom theme for better user experience &amp; conversion
 
 A premium, high-performance theme for Bagisto e-commerce platform with modern design and seamless integration.
 
-## Installation
+## Step-by-Step: Creating a NexusTheme Package in Bagisto
+To set up a custom theme package in Bagisto, follow these steps:
 
-1. Installsation
 
-#### Download the code and upload it to the packages directory in your Bagisto root folder:
+1. Navigate to the packages/ Directory in bagisto : Open your terminal and go to the root of your Bagisto project, then run:
+```php
+cd packages/
+```
+
+3. Create the Vendor and Package Folders
+Now create a folder for your vendor (e.g., Vfixtechnology) and inside it, create a new directory for the package (e.g., NexusTheme):
+```php
+mkdir -p Vfixtechnology/NexusTheme
+```
+
+4. Download the NexusTheme package code (and upload to packages/Vfixtechnology/).
+#### Download the code and upload it to the packages/Vfixtechnology/ directory in your Bagisto root folder:
 #### ex: packages/Vfixtechnology/NexusTheme
 
 2. Register the Service Provider
@@ -60,8 +72,20 @@ npm install && npm run build
 php artisan vendor:publish --provider="Vfixtechnology\NexusTheme\Providers\NexusThemeServiceProvider"
 ```
 
-8. Activate the Theme : Dashboard → Settings → Channels
+8. Clear Cache: 
+```php
+php artisan optimize:clear
+```
+
+9. Activate the Theme : Dashboard → Settings → Channels
 ##### Select the Nexus theme from the dropdown and save your changes.
+
+10. Note: After applying a new theme, the homepage may appear blank. To restore the previous homepage content, follow these steps:
+##### 1. Navigate to Dashboard > Theme.
+##### 2. For each section/item listed, change the theme from Default to Nexus.
+##### 3. This will reinstate all the original homepage components.
+
+
 
 
 ## Support This Project
