@@ -81,7 +81,7 @@ php artisan optimize:clear
 ##### Select the Nexus theme from the dropdown and save your changes.
 
 10. Note: After applying a new theme, the homepage may appear blank. To restore the previous homepage content, follow these steps:
-##### 1. Navigate to Dashboard > Theme.
+##### 1. Navigate to Dashboard > Settings -> Theme.
 ##### 2. For each section/item listed, change the theme from Default to Nexus.
 ##### 3. This will reinstate all the original homepage components.
 
