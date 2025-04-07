@@ -26,7 +26,7 @@ mkdir -p Vfixtechnology/NexusTheme
 #### ex: packages/Vfixtechnology/NexusTheme
 
 2. Register the Service Provider
-##### Go to bootstrap/app.php and add the following service provider:
+##### Go to bootstrap/providers.php and add the following service provider:
 ```php
 Vfixtechnology\NexusTheme\Providers\NexusThemeServiceProvider::class,
 ```
