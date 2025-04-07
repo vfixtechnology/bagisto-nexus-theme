@@ -1,0 +1,25 @@
+{
+    "name": "vfixtechnology/bagisto-nexus-theme",
+    "description": "Professional Nexus Theme for Bagisto E-Commerce",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vfixtechnology\\NexusTheme\\": "src/"
+        }
+    },
+	"extra": {
+        "laravel": {
+            "providers": [
+                "Vfixtechnology\\NexusTheme\\Providers\\NexusThemeServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "authors": [
+        {
+            "name": "Arun chahar",
+            "email": "info@vfixtechnology.com"
+        }
+    ]
+    
+}
