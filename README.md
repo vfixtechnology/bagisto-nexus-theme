@@ -66,21 +66,26 @@ composer dump-autoload
 npm install && npm run build
 ```
 
-7. Now Publish vendor: 
+6. Composer dump to autoload packages:
+##### Navigate to the main project directory:
+```php
+composer dump-autoload
+```
+8. Now Publish vendor: 
 ##### Run the following Artisan command to publish the theme's assets: (make sure for this need to navigate to main directory of project)
 ```php
 php artisan vendor:publish --provider="Vfixtechnology\NexusTheme\Providers\NexusThemeServiceProvider"
 ```
 
-8. Clear Cache: 
+9. Clear Cache: 
 ```php
 php artisan optimize:clear
 ```
 
-9. Activate the Theme : Dashboard → Settings → Channels
+10. Activate the Theme : Dashboard → Settings → Channels
 ##### Select the Nexus theme from the dropdown and save your changes.
 
-10. Note: After applying a new theme, the homepage may appear blank. To restore the previous homepage content, follow these steps:
+11. Note: After applying a new theme, the homepage may appear blank. To restore the previous homepage content, follow these steps:
 ##### 1. Navigate to Dashboard > Settings -> Theme.
 ##### 2. For each section/item listed, change the theme from Default to Nexus.
 ##### 3. This will reinstate all the original homepage components.
