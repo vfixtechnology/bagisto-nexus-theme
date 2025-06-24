@@ -18,7 +18,7 @@
                     @lang('shop::app.checkout.onepage.address.company-name')
                 </x-shop::form.control-group.label>
 
-                <x-shop::form.control-group.control
+                <x-shop::form.control-group.control class="hidden"
                     type="text"
                     ::name="controlName + '.company_name'"
                     ::value="address.company_name"
@@ -89,6 +89,27 @@
             </x-shop::form.control-group>
 
             {!! view_render_event('bagisto.shop.checkout.onepage.address.form.email.after') !!}
+
+            <!-- Vat ID -->
+            <template v-if="controlName=='billing'">
+                <x-shop::form.control-group class="hidden">
+                    <x-shop::form.control-group.label>
+                        @lang('shop::app.checkout.onepage.address.vat-id')
+                    </x-shop::form.control-group.label>
+
+                    <x-shop::form.control-group.control
+                        type="text"
+                        ::name="controlName + '.vat_id'"
+                        ::value="address.vat_id"
+                        :label="trans('shop::app.checkout.onepage.address.vat-id')"
+                        :placeholder="trans('shop::app.checkout.onepage.address.vat-id')"
+                    />
+
+                    <x-shop::form.control-group.error ::name="controlName + '.vat_id'" />
+                </x-shop::form.control-group>
+
+                {!! view_render_event('bagisto.shop.checkout.onepage.address.form.vat_id.after') !!}
+            </template>
 
             <!-- Street Address -->
             <x-shop::form.control-group>
@@ -294,8 +315,7 @@
                         last_name: '',
                         email: '',
                         address: [],
-                        // country: '', added below line to choose default country
-                        country: 'IN',
+                        country: '',
                         state: '',
                         city: '',
                         postcode: '',
@@ -306,7 +326,7 @@
 
             data() {
                 return {
-                    selectedCountry: this.address.country || 'IN', // added extra || 'IN' for default country as india
+                    selectedCountry: this.address.country || 'IN',
 
                     countries: [],
 
@@ -330,6 +350,7 @@
                 getCountries() {
                     this.$axios.get("{{ route('shop.api.core.countries') }}")
                         .then(response => {
+                            //this.countries = response.data.data;
                             this.countries = response.data.data;
                         })
                         .catch(() => {});

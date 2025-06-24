@@ -59,7 +59,7 @@
             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.currency_switcher.before') !!}
 
             <!-- Currency Switcher -->
-            <x-shop::dropdown>
+            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'left' : 'right' }}">
                 <!-- Dropdown Toggler -->
                 <x-slot:toggle>
                     <div
@@ -81,7 +81,7 @@
                 </x-slot>
 
                 <!-- Dropdown Content -->
-                <x-slot:content class="journal-scroll max-h-[500px] overflow-auto !p-0">
+                <x-slot:content class="journal-scroll max-h-[500px] !p-0">
                     <v-currency-switcher></v-currency-switcher>
                 </x-slot>
             </x-shop::dropdown>
@@ -90,9 +90,9 @@
 
             <p class="py-3 text-xs font-medium">
                 {{ core()->getConfigData('general.content.header_offer.title') }}
-                
-                <a 
-                    href="{{ core()->getConfigData('general.content.header_offer.redirection_link') }}" 
+
+                <a
+                    href="{{ core()->getConfigData('general.content.header_offer.redirection_link') }}"
                     class="underline"
                     role="button"
                 >
@@ -122,7 +122,7 @@
                             width="24"
                             height="16"
                         />
-                        
+
                         <span>
                             {{ core()->getCurrentChannel()->locales()->orderBy('name')->where('code', app()->getLocale())->value('name') }}
                         </span>
@@ -134,9 +134,9 @@
                         ></span>
                     </div>
                 </x-slot>
-            
+
                 <!-- Dropdown Content -->
-                <x-slot:content class="journal-scroll max-h-[500px] overflow-auto !p-0">
+                <x-slot:content class="journal-scroll max-h-[500px] !p-0">
                     <v-locale-switcher></v-locale-switcher>
                 </x-slot>
             </x-shop::dropdown>
@@ -170,7 +170,7 @@
                 class="flex cursor-pointer items-center gap-2.5 px-5 py-2 text-base hover:bg-gray-100"
                 :class="{'bg-gray-100': locale.code == '{{ app()->getLocale() }}'}"
                 v-for="locale in locales"
-                @click="change(locale)"                  
+                @click="change(locale)"
             >
                 <img
                     :src="locale.logo_url || '{{ bagisto_asset('images/default-language.svg') }}'"

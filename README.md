@@ -26,7 +26,7 @@ mkdir -p Vfixtechnology/NexusTheme
 #### ex: packages/Vfixtechnology/NexusTheme
 
 2. Register the Service Provider
-##### Go to bootstrap/app.php and add the following service provider:
+##### Go to bootstrap/providers.php and add the following service provider:
 ```php
 Vfixtechnology\NexusTheme\Providers\NexusThemeServiceProvider::class,
 ```
@@ -46,17 +46,18 @@ composer dump-autoload
 5. Configure the Theme
 ##### Open config/themes.php and under the shop section, add a new theme entry:
 ```php
-'nexus-theme' => [
-    'name'        => 'Nexus',
-    'assets_path' => 'public/themes/nexus-theme/default',
-    'views_path'  => 'resources/themes/nexus-theme/views',
+   'nexus-theme' => [
+            'name'        => 'Nexus',
+            'assets_path' => 'public/themes/shop/nexus',
+         // 'views_path' => 'resources/themes/nexus-theme/views', // Use this if you want to publish assets and override them
+           'views_path' => 'packages/Vfixtechnology/NexusTheme/src/Resources/views', // Use this for hot reloading and live changes directly in the package
 
-    'vite'        => [
-        'hot_file'                 => 'shop-nexus-theme-vite.hot',
-        'build_directory'          => 'themes/shop/nexus-theme/build',
-        'package_assets_directory' => 'src/Resources/assets',
-    ],
-],
+            'vite'        => [
+                'hot_file'                 => 'shop-nexus-vite.hot',
+                'build_directory'          => 'themes/shop/nexus-theme/build',
+                'package_assets_directory' => 'src/Resources/assets',
+            ],
+        ],
 ```
 
 6. Build Assets
@@ -66,13 +67,7 @@ composer dump-autoload
 npm install && npm run build
 ```
 
-7. Now Publish vendor: 
-##### Run the following Artisan command to publish the theme's assets: (make sure for this need to navigate to main directory of project)
-```php
-php artisan vendor:publish --provider="Vfixtechnology\NexusTheme\Providers\NexusThemeServiceProvider"
-```
-
-8. Clear Cache: 
+7. Clear Cache: 
 ```php
 php artisan optimize:clear
 ```
@@ -84,6 +79,7 @@ php artisan optimize:clear
 ##### 1. Navigate to Dashboard > Theme.
 ##### 2. For each section/item listed, change the theme from Default to Nexus.
 ##### 3. This will reinstate all the original homepage components.
+##### 4. 👉 During development, to avoid caching, add the following line in your .env file: : RESPONSE_CACHE_ENABLED=false
 
 
 

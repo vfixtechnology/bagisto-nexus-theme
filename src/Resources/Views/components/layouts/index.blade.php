@@ -76,6 +76,12 @@
             {!! core()->getConfigData('general.content.custom_scripts.custom_css') !!}
         </style>
 
+        @if(core()->getConfigData('general.content.speculation_rules.enabled'))
+            <script type="speculationrules">
+                @json(core()->getSpeculationRules(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+            </script>
+        @endif
+
         {!! view_render_event('bagisto.shop.layout.head.after') !!}
 
     </head>
@@ -152,5 +158,43 @@
         <script type="text/javascript">
             {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
         </script>
+
+        <script>
+        var url = 'https://scrm-data-us-oss.oss-us-west-1.aliyuncs.com/sender/whatsapp_replace_crisp/user_main.js';
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url;
+        var options = {
+            "enabled": true,
+            "chatButtonSetting": {
+                "backgroundColor": "#4dc247",
+                "ctaText": "",
+                "borderRadius": "25",
+                "marginLeft": "0",
+                "marginBottom": "65",
+                "marginRight": "10",
+                "position": "right"
+            },
+            "brandSetting": {
+                "brandName": "Raajita Fashions",
+                "brandSubTitle": "Replies instantly",
+                // replace this link with brand logo link
+                "brandImg": "",
+                "welcomeText": "Hi,there!\nHow can I help you?",
+                "messageText": "Hello, I have a question about {{ request()->fullUrl() }}",
+                "backgroundColor": "#0a5f54",
+                "ctaText": "Start Chat",
+                "borderRadius": "25",
+                "autoShow": false,
+                "phoneNumber": "919818478420"
+            }
+        };
+        s.onload = function() {
+            CreateWhatsappChatWidget(options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    </script>
     </body>
 </html>

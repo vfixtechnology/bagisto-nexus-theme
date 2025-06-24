@@ -19,21 +19,34 @@ export default defineConfig(({ mode }) => {
             host: process.env.VITE_HOST || "localhost",
             port: process.env.VITE_PORT || 5173,
             cors: true,
+            strictPort: true,
+            watch: {
+                usePolling: true,
+                interval: 100,
+            },
+            headers: {
+                'Cache-Control': 'no-store',
+            }
         },
+
 
         plugins: [
             vue(),
 
-            laravel({
-                hotFile: "../../../public/shop-nexus-theme-vite.hot",
+        laravel({
+                hotFile: "../../../public/shop-nexus-vite.hot",
                 publicDirectory: "../../../public",
                 buildDirectory: "themes/shop/nexus-theme/build",
                 input: [
                     "src/Resources/assets/css/app.css",
                     "src/Resources/assets/js/app.js",
                 ],
-                refresh: true,
+                refresh: [
+                    "src/Resources/views/**/*.blade.php",
+                    "routes/**/*.php",
+                ],
             }),
+
         ],
 
         experimental: {
